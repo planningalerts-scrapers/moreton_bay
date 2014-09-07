@@ -27,6 +27,8 @@ end
 
 # Implement a click on a link that understands stupid asp.net doPostBack
 def click(page, doc)
+  return nil if doc.nil?
+  
   js = doc["href"] || doc["onclick"]
   if js =~ /javascript:__doPostBack\('(.*)','(.*)'\)/
     event_target = $1
